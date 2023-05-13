@@ -1,0 +1,69 @@
+body{
+    background: var(--color-black)
+}
+
+
+.login-box {
+    background: var(--color-white);
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:250px;
+    padding:30px 5px;
+    color: var(--color-black);
+    border-radius:40px;
+}
+
+.form {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.section {
+    display:flex;
+    flex-direction: column;
+    margin-bottom:1rem;
+}
+
+.section > label {
+    display:flex;
+    width:400px;
+}
+
+.section > input {
+    border:none;
+    height:30px;
+    border-radius: 10px;
+    padding-left: 15px;
+}
+
+.submit-section {
+   display:grid;
+}
+
+.submit-section > input {
+    margin-top:20px;
+    width:400px;
+    border: none;
+    background: var(--color-primary);
+    height: 50px;
+    font-weight:600;
+    font-size:1.3em;
+    color: var(--color-white)
+}
+
+.submit-section > input:hover {
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.submit-section > span {
+    margin-top:15px;
+}
+
+.submit-section > span > a {
+    color:var(--color-primary)
+}
+
+

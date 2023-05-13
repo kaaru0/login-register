@@ -1,0 +1,19 @@
+* {
+    font-family: 'Poppins', sans-serif;  
+}
+
+body {
+  text-align: center;
+
+}
+
+:root{
+    --color-white:#EAEAEA;
+    --color-black:#252A34;
+    --color-primary: #FF2E63;
+    --color-accent: #08D9D6;
+}
+
+
+
+
