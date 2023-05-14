@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom'
+import Validation from './Validation';
 
 
 export default function Login() {
@@ -10,6 +11,7 @@ export default function Login() {
     userName: "",
     password: ""
   })
+  const [errors, setErrors] = React.useState({})
 
 
   const handleInput = (event) => {
@@ -24,6 +26,7 @@ export default function Login() {
   
   const handleSubmit = (event) => {
     event.preventDefault();
+    setErrors(Validation(values))
   }
 
   console.log(values)
@@ -35,14 +38,17 @@ export default function Login() {
             <div className="section">
                 <label htmlFor="email">E-mail</label>
                 <input type="email" name="email" onChange={handleInput}></input>
+                {errors.email && <span className='error-message'> {errors.email}</span>}
             </div>
             <div className="section">
                 <label htmlFor="userName">username</label>
                 <input type="text" name="userName" onChange={handleInput}></input>
+                {errors.userName && <span className='error-message'> {errors.userName}</span>}
             </div> 
             <div className="section">
                 <label htmlFor="password">password</label>
                 <input name="password" type="password" onChange={handleInput}></input>
+                {errors.password && <span className='error-message'> {errors.password}</span>}
             </div>
             <div className="submit-section">
                 <input type="submit" value="Create Account" />
