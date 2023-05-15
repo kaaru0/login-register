@@ -1,7 +1,8 @@
 import React from 'react'
 import './Register.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import RegValidation from './RegValidation'
+import axios from 'axios'
 
 
 export default function Register() {
@@ -13,8 +14,10 @@ export default function Register() {
         confirmPassword: ""
         })
 
-        const [errors, setErrors] = React.useState({})
-
+        const [errors, setErrors] = React.useState({
+            userName:""
+        });
+        const navigate = useNavigate();
         const handleInput = (event) => {
             const {name,value} = event.target
             setValues(prev => {
@@ -28,6 +31,28 @@ export default function Register() {
         const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(RegValidation(values))
+
+        if(errors.email === "" && errors.userName === "" && errors.password === ""){
+            axios
+            .post('http://localhost:8806/register', values)
+            .then(res => {
+                if(res.data === "User already exists") {
+                    setErrors(prevData => {
+                        return{
+                            ...prevData,
+                            userName:"User already exists"
+                        }
+                    })
+                 } else {
+                    navigate('/')
+                }
+            })
+            .catch(err => {
+                 
+                console.log(err)
+                 
+            })
+        }
         }
 
         console.log(values)
