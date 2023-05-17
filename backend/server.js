@@ -40,6 +40,22 @@ app.post('/register', (req,res) => {
     })
 })
 
+app.post('/login', (req,res) => {
+    const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ? AND `username` = ?" ;
+
+
+    db.query(sql,[req.body.email, req.body.password, req.body.userName],(err,data) => {
+        if(err) {
+            return res.json("Error");
+        } 
+        if(data.length > 0){
+            return res.json("Successful Login")
+        } else {
+            return res.json("User does not exist")
+        }
+    })
+})
+
 app.listen(8806, ()=> {
     console.log("successful connection to database")
 })

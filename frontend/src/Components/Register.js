@@ -48,9 +48,7 @@ export default function Register() {
                 }
             })
             .catch(err => {
-                 
                 console.log(err)
-                 
             })
         }
         }
